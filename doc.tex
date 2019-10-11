@@ -3,8 +3,8 @@
 \usetheme{Berlin}
 \usefonttheme{structurebold}
 
-\title{Binary Beasts}
-\author{Torey Clark, Ulysses Butler, Thu Vo, Tung Thai}
+\title{The Mirai Botnet}
+\author{Torey Clark, Ulysses Butler, Thu Vo, and Tung Thai}
 
 \institute{ Truman State University \\ Binary Beasts }
 
@@ -13,5 +13,92 @@
 \begin{document}
 
 \maketitle
+
+\section{Introduction}
+
+\begin{frame}
+	\frametitle{The Paper}
+	\begin{itemize}
+		\item<+-> Title: Understanding the Mirai Botnet
+		\item<+-> Journal: The Proceedings of the 26th USENIX Security Symposium
+	\end{itemize}
+\end{frame}
+
+\section{Spreading Mirai}
+
+\begin{frame}
+	\frametitle{Bootstraping}
+	\begin{itemize}
+		\item<+-> August 1, 2016: Servers owned by DataWagon began a preliminary scan.
+		\begin{itemize}
+			\item<+-> DataWagon is a bulletproof web hosting provider.
+			\item<+-> Users are allowed to upload to upload and distribute almost anything using their service.
+		\end{itemize}
+		\item<+-> After this scan, the botnet started infecting computers
+		\begin{itemize}
+			\item<+-> 1 minute -  800 infected devices
+			\item<+-> 10 minutes - 11,000 infected devices
+			\item<+-> 20 hours - 65,000 infected devices
+			\item<+-> Held steady at around 100,000 to 200,000 infections
+			\item<+-> In December 2016, it peaked at 600,000 devices before beginning to fade
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spreading}
+	
+\end{frame}
+
+\section{Exploiting IoT Devices}
+
+\begin{frame}[fragile]
+	\frametitle{Internet of Things Security}
+	\begin{itemize}
+		\item<+-> The Internet of Things
+		\begin{itemize}
+			\item<+-> Includes security cameras, routers, network-access storage, TV receivers, etc.
+			\item<+-> Typically embedded systems that aren't powerful
+		\end{itemize}
+		\item<+-> Manufactures neglect security
+		\begin{itemize}
+			\item<+-> Many manufactures use one user name and password
+			\item<+-> Common passwords are frequent. \verb|password|, \verb|admin|, etc.
+			\item<+-> Some devices even have credentials hard coded in firmware
+			\item<+-> Most companies don't have the infrastructure to release patches for these systems
+		\end{itemize}
+		\item<+-> This allowed the bot to easily infect a large number of machines
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Disadvantages}
+	\begin{itemize}
+		\item<+-> These less powerful devices also hurt Mirai's growth
+		\begin{itemize}
+			\item<+-> Mirai had a doubling time of 75-minutes
+			\begin{itemize}
+				\item<+-> Compare to 37-minutes for Code-Red
+				\item<+-> 9-minutes for Blaster
+			\end{itemize}
+			\item<+-> Most bots scanned at less than 250 bytes per second
+			\item<+-> Much slower than other bot nets
+			\item<+-> SQL Slammer was about 6000 times faster at 1.5 megabytes per second
+		\end{itemize}
+		\item<+-> Most devices were found in low bandwidth countries
+		\begin{itemize}
+			\item<+-> Most infected devices were from South America and South-east Asia
+			\item<+-> Brazil, Colombia, and Vietnam hosted most of the bots
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Attacking}
+
+\
+
+\section{Open Source Software}
+
+\section{Defending Against Mirai}
 
 \end{document}
