@@ -19,8 +19,11 @@
 \begin{frame}
 	\frametitle{The Paper}
 	\begin{itemize}
-		\item<+-> Title: Understanding the Mirai Botnet
-		\item<+-> Journal: The Proceedings of the 26th USENIX Security Symposium
+		\item<+-> Title: \textit{Understanding the Mirai Botnet}
+		\item<+-> \textit{The Proceedings of the 26th USENIX Security Symposium}
+		\item<+-> This paper explores the Mirai botnet
+		\item<+-> This botnet was responsible for one of the largest DDoS attacks every recorded.
+		\item<+-> The researchers reverse engineer binaries used by the botnet to determine how it worked, how it spread, and what damage it did
 	\end{itemize}
 \end{frame}
 
@@ -47,7 +50,62 @@
 
 \begin{frame}
 	\frametitle{Spreading}
-	
+	\begin{columns}
+		\column{0.5\linewidth}
+			\includegraphics[width=\textwidth]{fig1.png}
+		\column{0.5\linewidth}
+			\begin{itemize}
+				\item<+-> A member of the botnet begins scanning scanning ports on all IPv4 addresses
+				\item<+-> It scans to find open ports for SSH, Telnet, FTP, and other protocols
+				\item<+-> It would then use a dictionary attack to brute force into the machine
+				\item<+-> These were small dictionaries, containing 60 to about 200 credentials
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spreading}
+	\begin{columns}
+		\column{0.5\linewidth}
+			\includegraphics[width=\textwidth]{fig2.png}
+		\column{0.5\linewidth}
+			\begin{itemize}
+				\item<+-> The address and credentials of the victim machines where then sent to a report server
+				\item<+-> This information could later be used by the Command and Control (C2) server
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spreading}
+	\begin{columns}
+		\column{0.5\linewidth}
+			\includegraphics[width=\textwidth]{fig3.png}
+		\column{0.5\linewidth}
+			\begin{itemize}
+				\item<+-> The records server then sent this information to the load program
+				\item<+-> This program would download a binary onto the victim and run the program
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Loading the Binary}
+	\begin{itemize}
+		\item<+-> The aforementioned loader program downloaded an architecture specific binary
+		\item<+-> The machine would then run the binary and change the process information to make it harder to detect
+		\item<+-> The binary is then deleted.
+		\begin{itemize}
+			\item<+-> This means infections won't carry across reboots
+		\end{itemize}
+		\item<+-> Once the victim is infected, it starts scanning
+		\begin{itemize}
+			\item<+-> It would specifically avoid scanning servers owned by major corporations or the government
+			\item<+-> These entities would likely be too secure for this simple attack
+			\item<+-> This also allowed the bot to keep a lower profile
+			\item<+-> These organizations would be much more likely to start search for and exploiting weaknesses in the malware if it infected their machines
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \section{Exploiting IoT Devices}
