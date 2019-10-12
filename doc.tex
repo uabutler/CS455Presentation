@@ -166,7 +166,7 @@
 	\begin{itemize}
 		\item<+-> The Internet of Things
 		\begin{itemize}
-			\item<+-> Includes security cameras, routers, network-access storage, TV receivers, etc.
+			\item<+-> Includes security cameras, routers, network-access storage, TV receivers, printer, DVRs, etc.
 			\item<+-> Typically embedded systems that aren't powerful
 		\end{itemize}
 		\item<+-> Manufactures neglect security
@@ -254,10 +254,120 @@
 			\end{itemize}
 		\item<+-> Notable Targets
 			\begin{itemize}
-				\item<+-> Krebs on Security - largest reported DDos attack to that point
+				\item<+-> Krebs on Security
+				\begin{itemize}
+					\item<+-> This was a high-profile attack on a well-known security blog
+					\item<+-> The attack peaked at around 600 Gbps, the largest Akamai had ever seen 						\item<+-> This forced them to drop Krebs as a client due to high costs
+				\end{itemize}
 				\item<+-> Dyn - DNS attack disrupted access for Amazon, Github, Netflix, Twitter, and others
 				\item<+-> Lonestar Cell - most attacked target, destroyed internet capabilities in Liberia
 			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Methodology}
+
+\begin{frame}
+	\frametitle{Network Telescope}
+	\begin{itemize}
+		\item<+-> Purpose: to analyze the growth and size of the botnet
+		\item<+-> Monitored network request (scan) to a network telescope composed 4.7 millions IP address.
+		\begin{itemize}
+			\item<+-> On average, the network telescope received 1.1 million packets from 269,000 IP addresses per minute 
+			\item<+-> Observed 116.2 billions Mirai probes from 55.4 millions IP address.
+		\end{itemize}
+		\item<+-> A raw count of IP addess is a poor metric due to DHCP churn
+		\begin{itemize}
+			\item<+-> Consider the number of hosts actively "scanning" at the start of every hours.
+			\item<+-> Identified scans that targeted the IPv4 address space at an estimated rate of at least five packets per second.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Active Scanning}
+	\begin{itemize}
+		\item<+-> Purpose: to analyze infected device composition (manufacturer and model).
+		\item<+-> Focus on scans of HTTPS, FTP, SSH, Telnet, and CWMP.
+		\item<+-> Difficulties and challenges to make accurate device labeling:		
+		\begin{itemize}
+			\item<+-> Mirai prevents infected devices from being scanned upon infection.
+			\item<+-> The scan often takes 24 hours to complete, during which devices may churn to a new IP address
+			\item<+-> Resolution: restricting analysis to banners that were collected within twenty minutes of scanning activity.
+		\end{itemize}
+		\item<+-> Post-filtering, the dataset include 1.8 millions banner associated with 1.2 million IP address.
+		\begin{itemize}
+			\item<+-> Process each banner to identify the device manufacturer and model using Nmap.
+			\item<+-> In total, identified for 31.5 \% of banners (about 600k banners)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Telnet Honeypots}
+	\begin{itemize}
+		\item<+-> Use a set of Telnet honeypots that masqueraded as vulnerable IoT. 
+		\begin{itemize}
+			\item<+-> The honeypot logged all incoming traffic and downloaded any binaries that the attackers attemps to install.
+			\item<+-> Block all outgoing request to avoid collateral damages.
+		\end{itemize}
+		\item<+-> Logged 80K connection attempts from 54K IP addresses and collected 141 unique binaries.
+		\begin{itemize}
+			\item<+-> Supplemented these data with unique binaries from others
+			\item<+-> In totals, they collected 1028 unique binaries.
+		\end{itemize}
+		\item<+-> Analyzed binaries for MIPS 32-bit, ARM 32-bit, and x86 32-bit.
+		\begin{itemize}
+			\item<+-> Extracted the set of logins, password, IP blacklisted, C2 domains.
+			\item<+-> Identified 67 C2 domains and 48 distinct username password dictionaries (containing a total 371 unique passwords)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Active \& Passive DNS}
+	\begin{itemize}
+		\item<+-> Purpose: to construct a graph reflecting the shared infrastructure used by Mirai.
+		\item<+-> Collected 209 millions passive DNS record per day (historical record of DNS zone) and 290 millions active DNS record per day of C2 server.
+		\item<+-> Use above dataset to identify shared DNS infrastructure by linking related historic domain names (RHDN) and related historic IPs (RHIPs).
+		\begin{itemize}
+			\item<+-> For a given C2 domain, identify the IP address it previously resolved to and added them to a growing set of domains and IPs.
+			\item<+-> Starting from an IP and finding any domain names that concurrently resolved it.
+			\item<+-> In the end, from a single domain name, we can expand a set of domain name and IP addresses.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[width=50 mm, scale = 0.5]{C2DomainRelationship.png}
+		\caption{ \textbf{C2 Domain Relationships} -- We visualize related C2 infrastructure, depicting C2 domains as nodes and shared IPs as edges between two domains.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Attack Commands}
+	\begin{itemize}
+		\item<+-> Purpose: to track the attack commands issued by the Mirai operators.
+		\item<+-> Simulated a Mirai-infected device and communicated with the C2 server using a custom bot-to-C2 protocol .
+		\item<+-> In total, Akamai observed 64K attack commands issued by 484 unique C2 servers  (by IP address).
+		\begin{itemize}
+			\item<+-> This is a naive analysis because individual C2 servers often repeat the same attack command in rapid succession.
+			\item<+-> Resolution: collapse matching commands that occur within 90 seconds of each others.
+			\item<+-> Results: 15,194 attacks from 146 unique IP clusters, which cover the Dyn attack and Liberia attacks.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{DDoS Attack trace}
+	\begin{itemize}
+		\item<+-> Purpose: to corroborate the IP addresses observed in attacks versus those found scanning our network telescope.
+		\begin{itemize}
+			\item<+-> Dyn provided 107.5K IP addresses associated
+with attack on October 21, 2016 and 158.8K IP addresses involved in attack on September 25, 2016.
+			\item<+-> Form a statistics to calculate what fraction of these IP addresses matched the list of IP address obseved by our network telescope.
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -307,7 +417,51 @@
 \begin{frame}
 	\frametitle{Origin of Mirai}
 	\begin{itemize}
+		\item<+-> After this paper was released, we started to learn more about the botnet's origins
 		\item<+-> Mirai was created by 3 computer science students
+		\begin{itemize}
+			\item<+-> 21-year-old Paras Jha
+			\item<+-> 20-year-old Josiah White
+			\item<+-> 21-year-old Dalton Norman
+		\end{itemize}
+		\item<+-> It's likely named after the anime Mirai Nikki (Future Diary)
+		\item<+-> As revealed after the trial, this botnet was originally created to DDoS Minecraft servers
+		\item<+-> The group allegedly started trying to profit from their botnet
+		\begin{itemize}
+			\item<+-> Extorting profitable servers
+			\item<+-> Creating a company to protect server owners from DDoS attacks
+			\item<+-> Renting out their botnet to other cybercriminals
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Investigations}
+	\begin{itemize}
+		\item<+-> Anna-senpai boosted about his programming skills on the forum
+		\begin{itemize}
+			\item<+-> After investigating companies related to DataWagon, Krebs found ProTraf solutions
+			\item<+-> The skills Anna-senpai had were extremely similar to Jha's.
+			\item<+-> He also has experience running Minecraft servers, similar to the original targets
+		\end{itemize}
+		\item<+-> According to Krebs on Security, the creators then released the source code to ``distance themselves from their creation''
+		\item<+-> Many attacks, such as the attack on Dyn, are believed to be a result of copy cat attackers
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Investigation}
+	\begin{itemize}
+		\item<+-> On December 8, 2017, the FBI announced that it had secured guilty pleas
+		\item<+-> The authors were able to avoid jail time after cooperating with the FBI to help track other cybercriminals.
+		\item<+-> This allowed them to avoid jail time
+		\begin{itemize}
+			\item<+-> Five-year probation
+			\item<+-> 2,500 Hours of community service
+			\item<+-> \$127,000 in restitution
+			\item<+-> They had to forfeit the concurrency made during that time
+			\item<+-> This was about 17 bitcoin
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
