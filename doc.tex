@@ -1,6 +1,7 @@
 \documentclass{beamer}
 
 \usetheme{Berlin}
+%\usetheme{Ilmenau}
 \usefonttheme{structurebold}
 
 \title{The Mirai Botnet}
@@ -9,6 +10,14 @@
 \institute{ Truman State University \\ Binary Beasts }
 
 \date{}
+
+%https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-antonakakis.pdf
+
+%You are expected to read and analyze and dissect the information presented in the research paper, and if you look up online you might also be able to find PPT/Video presentation of the paper. Based on your understanding your team would prepare a research presentation that'd include the problem statement (issue), methodology (process), results including pros-cons of the research paper. You are expected to go above and beyond the assigned paper and present your "RESEARCHED" information in a concise manner about the topic.  Any sort of demo is highly encouraged but not required.
+
+%The presentation would last 35 minutes so prepare accordingly and each team member is required to participate in presenting the material. You are also required to prepare a summary document in 800-1200 words, that presents the crux of the research problem and possible solutions. 
+
+%Each team shall have 35 mins to present their research on their topic. You should include the problem statement, motivation, related works, background, contribution, evaluation, significance of the research paper along with your own research on the topic.
 
 \begin{document}
 
@@ -23,11 +32,53 @@
 		\item<+-> \textit{The Proceedings of the 26th USENIX Security Symposium}
 		\item<+-> This paper explores the Mirai botnet
 		\item<+-> This botnet was responsible for one of the largest DDoS attacks every recorded.
-		\item<+-> The researchers reverse engineer binaries used by the botnet to determine how it worked, how it spread, and what damage it did
+		\item<+-> The purpose of this paper was to learn about how the botnet worked.
+		\item<+-> Researchers from a number of institutions reversed engineered it to better understand how it spread
+		\item<+-> This paper then proposes reforms that can be made to prevent this kind of attack in the future
 	\end{itemize}
 \end{frame}
 
-\section{Spreading Mirai}
+\begin{frame}
+	\frametitle{Contributions}
+	\begin{itemize}
+		\item<1-> Lead Author
+		\begin{itemize}
+			\item<1-> Zane Ma - University of Illinois Urbana-Champaign
+		\end{itemize}
+		\item<2-> This paper had help from many different authors
+		\begin{itemize}
+			\item<3-> Manos Antonakakis - Georgia Institute of Technology
+			\item<3-> Tim April - Akamai Technologies
+			\item<3-> Michael Bailey - University of Illinois Urbana-Champaign
+			\item<3-> Matthew Bernhard - University of Michigan
+			\item<3-> Elie Bursztein - Google
+			\item<3-> Jaime Cochran - Cloudflare
+			\item<3-> Zakir Durumeric - University of Michigan
+			\item<3-> J. Alex Halderman - University of Michigan
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contributions Cont.}
+	\begin{itemize}
+		\item<1-> Continued...
+		\begin{itemize}
+			\item<1-> Luca Invernizzi - Google
+			\item<1-> Michalis Kallitsis - Merit Network
+			\item<1-> Deepak Kumar - University of Illinois Urbana-Champaign
+			\item<1-> Chaz Lever - Georgia Institute of Technology
+			\item<1-> Joshua Mason - University of Illinois Urbana-Champaign
+			\item<1-> Damian Menscher - Google
+			\item<1-> Chad Seaman - Akamai Technologies
+			\item<1-> Nick Sullivan - Cloudflare
+			\item<1-> Kurt Thomas - Google
+			\item<1-> Yi Zhou - University of Illinois Urbana-Champaign
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Spreading}
 
 \begin{frame}
 	\frametitle{Bootstraping}
@@ -108,7 +159,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Exploiting IoT Devices}
+\section{Exploiting IoT}
 
 \begin{frame}[fragile]
 	\frametitle{Internet of Things Security}
@@ -153,7 +204,6 @@
 
 \section{Attacking}
 
-\section{Attacking}
 \begin{frame}
     \frametitle{How DDoS Works}
     \begin{itemize}
@@ -165,34 +215,35 @@
             \end{itemize}
     \end{itemize}
 \end{frame}
+
 \begin{frame}
     \frametitle{Types of DDoS Attacks from Mirai}
     \begin{itemize}
         \item Volumetric Attacks consist of a flooding a server with request packets to overwhelm its ability to respond. Volumetric attacks require little work to generate a high count of requests. With requests from multiple machines, it is difficult to prevent or dampen an attack on a server.
         \item Protocol Attacks seek to disable a server by exloiting a weakness in a protocl. SYN flood attacks TCP by exploiting the three-way handshake process to create a backlogged queue. Ping attacks uses a large number of pings to attack a server. UDP floods send massive amounts of packets to random ports.
         \item Application layer attacks attempt to exploit the layer of human interaction with a machine. These attacks are nearly indistinguishable from real user interaction. They requires far less resources to execute this attack than it takes to prevent that attack. 
-    \end{itemize}-
-    
+    \end{itemize}
 \end{frame}
+
 \begin{frame}
     \frametitle{Attacks}
 	\begin{itemize}
-		\item<+->Distributed Denial of Service (DDoS) Strategies
+		\item<+-> Distributed Denial of Service (DDoS) Strategies
 			\begin{itemize}
-				\item<+->Multiple DDoS attacks against a variety of targets
-				\item<+->Game Servers (primarily Minecraft and Runescape)
-				\item<+->Political Websites, anti-DDoS protectors
+				\item<+-> Multiple DDoS attacks against a variety of targets
+				\item<+-> Game Servers (primarily Minecraft and Runescape)
+				\item<+-> Political Websites, anti-DDoS protectors
 			\end{itemize}
-		\item<+->Notable Targets
+		\item<+-> Notable Targets
 			\begin{itemize}
-				\item<+->Krebs on Security - largest reported DDos attack to that point
-				\item<+->Dyn - DNS attack disrupted access for Amazon, Github, Netflix, Twitter, and others
-				\item<+->Lonestar Cell - most attacked target, destroyed internet capabilities in Liberia
+				\item<+-> Krebs on Security - largest reported DDos attack to that point
+				\item<+-> Dyn - DNS attack disrupted access for Amazon, Github, Netflix, Twitter, and others
+				\item<+-> Lonestar Cell - most attacked target, destroyed internet capabilities in Liberia
 			\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\section{Open Source Software}
+\section{Open Source}
 
 \begin{frame}
 	\frametitle{Releasing the Source Code}
@@ -212,6 +263,28 @@
 	\end{itemize}
 \end{frame}
 
-\section{Defending Against Mirai}
+\section{Defending}
+
+\section{Further Research}
+
+\begin{frame}
+	\frametitle{Origin of Mirai}
+	\begin{itemize}
+		\item<+-> Mirai was created by 3 computer science students
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+	\frametitle{Conclusion}
+	\begin{itemize}
+		\item<+-> Mirai was a centralized botnet that was responsible for some of the largest DoS attacks every recorded.
+		\item<+-> This bot was relatively simple with small dictionaries
+		\item<+-> They creators of this bot exploited the security negligence of hardware manufactures
+		\item<+-> They were able to quickly take over a large number of IoT devices
+		\item<+-> This attack served as a wake up call, prompting reform in these industries
+	\end{itemize}
+\end{frame}
 
 \end{document}
