@@ -41,20 +41,20 @@
 \begin{frame}
 	\frametitle{Contributions}
 	\begin{itemize}
-		\item Lead Author
+		\item<1-> Lead Author
 		\begin{itemize}
-			\item Zane Ma - University of Illinois Urbana-Champaign
+			\item<1-> Zane Ma - University of Illinois Urbana-Champaign
 		\end{itemize}
-		\item This paper had help from many different authors
+		\item<2-> This paper had help from many different authors
 		\begin{itemize}
-			\item Manos Antonakakis - Georgia Institute of Technology
-			\item Tim April - Akamai Technologies
-			\item Michael Bailey - University of Illinois Urbana-Champaign
-			\item Matthew Bernhard - University of Michigan
-			\item Elie Bursztein - Google
-			\item Jaime Cochran - Cloudflare
-			\item Zakir Durumeric - University of Michigan
-			\item J. Alex Halderman - University of Michigan
+			\item<3-> Manos Antonakakis - Georgia Institute of Technology
+			\item<3-> Tim April - Akamai Technologies
+			\item<3-> Michael Bailey - University of Illinois Urbana-Champaign
+			\item<3-> Matthew Bernhard - University of Michigan
+			\item<3-> Elie Bursztein - Google
+			\item<3-> Jaime Cochran - Cloudflare
+			\item<3-> Zakir Durumeric - University of Michigan
+			\item<3-> J. Alex Halderman - University of Michigan
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -62,18 +62,18 @@
 \begin{frame}
 	\frametitle{Contributions Cont.}
 	\begin{itemize}
-		\item Continued...
+		\item<1-> Continued...
 		\begin{itemize}
-			\item Luca Invernizzi - Google
-			\item Michalis Kallitsis - Merit Network
-			\item Deepak Kumar - University of Illinois Urbana-Champaign
-			\item Chaz Lever - Georgia Institute of Technology
-			\item Joshua Mason - University of Illinois Urbana-Champaign
-			\item Damian Menscher - Google
-			\item Chad Seaman - Akamai Technologies
-			\item Nick Sullivan - Cloudflare
-			\item Kurt Thomas - Google
-			\item Yi Zhou - University of Illinois Urbana-Champaign
+			\item<1-> Luca Invernizzi - Google
+			\item<1-> Michalis Kallitsis - Merit Network
+			\item<1-> Deepak Kumar - University of Illinois Urbana-Champaign
+			\item<1-> Chaz Lever - Georgia Institute of Technology
+			\item<1-> Joshua Mason - University of Illinois Urbana-Champaign
+			\item<1-> Damian Menscher - Google
+			\item<1-> Chad Seaman - Akamai Technologies
+			\item<1-> Nick Sullivan - Cloudflare
+			\item<1-> Kurt Thomas - Google
+			\item<1-> Yi Zhou - University of Illinois Urbana-Champaign
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -210,7 +210,9 @@
         \item How to DDoS for Dummies
             \begin{itemize}
                 \item A DDoS seeks to restrict a servers capabilities to respond to users by flooding it with requests from multiple different machines.
-                \item DDoS attacks are more difficult to protect against compared to a DOS attack because it is difficult to blacklist multiple IP Addresses and distinguish between real requests and the attack.
+                \item DDoS attacks are more difficult to protect against compared to a DoS attack
+                \item It is difficult to blacklist multiple IP Addresses
+                \item It's nearly impossible to distinguish between real requests and the attack.
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -218,28 +220,45 @@
 \begin{frame}
     \frametitle{Volumetric Attacks}
         \begin{itemize}
-            \item Volumetric Attacks consist of a flooding a server with request packets to overwhelm its ability to respond. Volumetric attacks require little work to generate a high count of requests. With requests from multiple machines, it is difficult to prevent or dampen an attack on a server.
+            \item Volumetric Attacks consist of a flooding a server with request packets
+            \item Overwhelms its ability to respond
+            \item Requires work to generate a high count of requests
+            \item With requests from multiple machines, it is difficult to prevent or dampen an attack on a server.
     \end{itemize}
 \end{frame}
 \begin{frame}
     \frametitle{Protocal Attacks}
      \begin{itemize}
-            \item <+->Protocol Attacks seek to disable a server by exloiting a weakness in a protocl. SYN flood attacks TCP by exploiting the three-way handshake process to create a backlogged queue. Ping attacks uses a large number of pings to attack a server. UDP floods send massive amounts of packets to random ports to overwhelm the queue of responses.
+            \item Protocol Attacks seek to disable a server by exploiting a weakness in a given protocol
+            \item SYN floods attacks TCP by exploiting the three-way handshake process to create a backlogged queue
+            \item Ping attacks uses a large number of pings to attack a server
+            \item UDP floods send massive amounts of packets to random ports to overwhelm the queue of responses
         \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Application Layer Attacks}
         \begin{itemize}
-            \item Application layer attacks attempt to exploit the layer of human interaction with a machine. These attacks are nearly indistinguishable from real user interaction. They requires far less resources to execute this attack than it takes to prevent that attack. This makes these attacks resource efficient for an attacker.
+            \item Application layer attacks attempt to exploit the layer of human interaction with a machine
+            \item Nearly indistinguishable from real user interaction
+            \item requires far less resources to execute this attack than it takes to prevent that attack
+            \item This makes these attacks resource efficient for an attacker
     \end{itemize}
 \end{frame}
+
 \begin{frame}
-    \frametitle{}
+    \frametitle{Types of Services Attacked}
     \begin{itemize}
         \item Most attacks were orchestrated against targets in the United States(50.3\%), France(6.6\%), and the UK(6.1\%).
-        \item Mirai could also target particular ports to affect specific services. Of the attacks on specified ports, the most common ones attacked were 80(HTTP, 37.5\%), 25565(Minecraft, 9.2\%), 443(HTTPS, 6.4\%), and 23594(Runescape, 3.4\%).
-        \item Several Mirai C2 servers were attacked by some of its other C2 servers. These are from renting DDoS attackers against other renting DDoS attackers.
+        \item Mirai could also target particular ports to affect specific services
+        \begin{itemize}
+        		\item The most common ones attacked were 80(HTTP, 37.5\%)
+        		\item 25565(Minecraft, 9.2\%)
+        		\item 443(HTTPS, 6.4\%)
+        		\item and 23594(Runescape, 3.4\%)
+        \end{itemize}
+        \item Several Mirai C2 servers were attacked by some of its other C2 servers
+        \item These were likely from renting DDoS attackers against other renting DDoS attackers.
     \end{itemize}
 \end{frame}
 
@@ -250,7 +269,8 @@
 			\begin{itemize}
 				\item Multiple DDoS attacks against a variety of targets
 				\item Game Servers (primarily Minecraft and Runescape)
-				\item Political Websites, anti-DDoS protectors
+				\item Political WebsitesA
+				\item Anti-DDoS services
 			\end{itemize}
 		\item Notable Targets
 			\begin{itemize}
@@ -268,18 +288,29 @@
 \section{Methodology}
 
 \begin{frame}
+	\frametitle{Methodology}
+	\begin{itemize}
+		\item The researches and authors of this paper used a number of techniques
+		\item They used attempted to monitor the botnet's spread
+		\item Many binaries used by the malware were captured
+		\item A number of organizations tried a variety of techniques and shared their information for this paper.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Network Telescope}
 	\begin{itemize}
+		\item One method for monitoring the spread was by using network telescopes
 		\item Purpose: to analyze the growth and size of the botnet
-		\item Monitored network request (scan) to a network telescope composed 4.7 millions IP address.
+		\item Monitored network request (scan) to a network telescope composed 4.7 millions IP address
 		\begin{itemize}
 			\item On average, the network telescope received 1.1 million packets from 269,000 IP addresses per minute 
-			\item Observed 116.2 billions Mirai probes from 55.4 millions IP address.
+			\item Observed 116.2 billions Mirai probes from 55.4 millions IP address
 		\end{itemize}
 		\item A raw count of IP addess is a poor metric due to DHCP churn
 		\begin{itemize}
-			\item Consider the number of hosts actively "scanning" at the start of every hours.
-			\item Identified scans that targeted the IPv4 address space at an estimated rate of at least five packets per second.
+			\item Consider the number of hosts actively "scanning" at the start of every hours
+			\item Identified scans that targeted the IPv4 address space at an estimated rate of at least five packets per second
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -287,18 +318,19 @@
 \begin{frame}
 	\frametitle{Active Scanning}
 	\begin{itemize}
+		\item The researches also tried scanning infected devices
 		\item Purpose: to analyze infected device composition (manufacturer and model).
 		\item Focus on scans of HTTPS, FTP, SSH, Telnet, and CWMP.
 		\item Difficulties and challenges to make accurate device labeling:		
 		\begin{itemize}
-			\item Mirai prevents infected devices from being scanned upon infection.
+			\item Mirai prevents infected devices from being scanned
 			\item The scan often takes 24 hours to complete, during which devices may churn to a new IP address
-			\item Resolution: restricting analysis to banners that were collected within twenty minutes of scanning activity.
+			\item Resolution: restricting analysis to banners that were collected within twenty minutes of scanning activity
 		\end{itemize}
-		\item Post-filtering, the dataset include 1.8 millions banner associated with 1.2 million IP address.
+		\item Post-filtering, the dataset include 1.8 millions banner associated with 1.2 million IP address
 		\begin{itemize}
-			\item Process each banner to identify the device manufacturer and model using Nmap.
-			\item In total, identified for 31.5 \% of banners (about 600k banners)
+			\item Process each banner to identify the device manufacturer and model using Nmap
+			\item In total, identified 31.5 \% of banners (about 600k banners)
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -306,19 +338,19 @@
 \begin{frame}
 	\frametitle{Telnet Honeypots}
 	\begin{itemize}
-		\item Use a set of Telnet honeypots that masqueraded as vulnerable IoT. 
+		\item Use a set of Telnet honeypots that masqueraded as vulnerable IoT
 		\begin{itemize}
-			\item The honeypot logged all incoming traffic and downloaded any binaries that the attackers attemps to install.
-			\item Block all outgoing request to avoid collateral damages.
+			\item The honeypot logged all incoming traffic and downloaded any binaries that the attackers attemps to install
+			\item Block all outgoing request to avoid collateral damages
 		\end{itemize}
 		\item Logged 80K connection attempts from 54K IP addresses and collected 141 unique binaries.
 		\begin{itemize}
 			\item Supplemented these data with unique binaries from others
-			\item In totals, they collected 1028 unique binaries.
+			\item In totals, they collected 1028 unique binaries
 		\end{itemize}
-		\item Analyzed binaries for MIPS 32-bit, ARM 32-bit, and x86 32-bit.
+		\item Analyzed the most common, binaries for MIPS 32-bit, ARM 32-bit, and x86 32-bit.
 		\begin{itemize}
-			\item Extracted the set of logins, password, IP blacklisted, C2 domains.
+			\item Extracted the set of logins, password, IP blacklists, and C2 domains
 			\item Identified 67 C2 domains and 48 distinct username password dictionaries (containing a total 371 unique passwords)
 		\end{itemize}
 	\end{itemize}
@@ -327,13 +359,13 @@
 \begin{frame}
 	\frametitle{Active \& Passive DNS}
 	\begin{itemize}
-		\item Purpose: to construct a graph reflecting the shared infrastructure used by Mirai.
-		\item Collected 209 millions passive DNS record per day (historical record of DNS zone) and 290 millions active DNS record per day of C2 server.
-		\item Use above dataset to identify shared DNS infrastructure by linking related historic domain names (RHDN) and related historic IPs (RHIPs).
+		\item Purpose: to construct a graph reflecting the shared infrastructure used by Mirai
+		\item Collected 209 millions passive DNS record per day (historical record of DNS zone) and 290 millions active DNS record per day of C2 server
+		\item Use above dataset to identify shared DNS infrastructure by linking related historic domain names (RHDN) and related historic IPs (RHIPs)
 		\begin{itemize}
-			\item For a given C2 domain, identify the IP address it previously resolved to and added them to a growing set of domains and IPs.
-			\item Starting from an IP and finding any domain names that concurrently resolved it.
-			\item In the end, from a single domain name, we can expand a set of domain name and IP addresses.
+			\item For a given C2 domain, identify the IP address it previously resolved to and added them to a growing set of domains and IPs
+			\item Starting from an IP and finding any domain names that concurrently resolved it
+			\item In the end, from a single domain name, we can expand a set of domain name and IP addresses
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -348,13 +380,13 @@
 \begin{frame}
 	\frametitle{Attack Commands}
 	\begin{itemize}
-		\item Purpose: to track the attack commands issued by the Mirai operators.
-		\item Simulated a Mirai-infected device and communicated with the C2 server using a custom bot-to-C2 protocol .
-		\item In total, Akamai observed 64K attack commands issued by 484 unique C2 servers  (by IP address).
+		\item Purpose: to track the attack commands issued by the Mirai operators
+		\item Simulated a Mirai-infected device and communicated with the C2 server using a custom bot-to-C2 protocol
+		\item In total, Akamai observed 64K attack commands issued by 484 unique C2 servers  (by IP address)
 		\begin{itemize}
-			\item This is a naive analysis because individual C2 servers often repeat the same attack command in rapid succession.
-			\item Resolution: collapse matching commands that occur within 90 seconds of each others.
-			\item Results: 15,194 attacks from 146 unique IP clusters, which cover the Dyn attack and Liberia attacks.
+			\item This is a naive analysis because individual C2 servers often repeat the same attack command in rapid succession
+			\item Resolution: collapse matching commands that occur within 90 seconds of each others
+			\item Results: 15,194 attacks from 146 unique IP clusters, which cover the Dyn attack and Liberia attacks
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -365,8 +397,8 @@
 		\item Purpose: to corroborate the IP addresses observed in attacks versus those found scanning our network telescope.
 		\begin{itemize}
 			\item Dyn provided 107.5K IP addresses associated
-with attack on October 21, 2016 and 158.8K IP addresses involved in attack on September 25, 2016.
-			\item Form a statistics to calculate what fraction of these IP addresses matched the list of IP address obseved by our network telescope.
+with attack on October 21, 2016 and 158.8K IP addresses involved in attack on September 25, 2016
+			\item Form a statistics to calculate what fraction of these IP addresses matched the list of IP address obseved by our network telescope
 		\end{itemize}
 	\end{itemize}
 \end{frame}
