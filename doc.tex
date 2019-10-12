@@ -35,7 +35,7 @@
 		\item<+-> August 1, 2016: Servers owned by DataWagon began a preliminary scan.
 		\begin{itemize}
 			\item<+-> DataWagon is a bulletproof web hosting provider.
-			\item<+-> Users are allowed to upload to upload and distribute almost anything using their service.
+			\item<+-> Users are allowed to upload and distribute almost anything using their service.
 		\end{itemize}
 		\item<+-> After this scan, the botnet started infecting computers
 		\begin{itemize}
@@ -153,31 +153,46 @@
 
 \section{Attacking}
 
-\section{Attacking}
 \begin{frame}
     \frametitle{How DDoS Works}
     \begin{itemize}
         \item How to DDoS for Dummies
             \begin{itemize}
-                \item A DDoS seeks to restrict a servers capabilities to respond to users by flooding it with requests from multiple different machines.
-                \item DDoS attacks are more difficult to protect against compared to a DOS attack because it is difficult to blacklist multiple IP Addresses and distinguish between real requests and the attack.
-                \item 
+                \item<+-> A DDoS seeks to restrict a servers capabilities to respond to users by flooding it with requests from multiple different machines.
+                \item<+-> DDoS attacks are more difficult to protect against compared to a DOS attack because it is difficult to blacklist multiple IP Addresses and distinguish between real requests and the attack.
             \end{itemize}
     \end{itemize}
 \end{frame}
 \begin{frame}
-    \frametitle{Types of DDoS Attacks from Mirai}
+    \frametitle{Volumetric Attacks}
+        \begin{itemize}
+            \item Volumetric Attacks consist of a flooding a server with request packets to overwhelm its ability to respond. Volumetric attacks require little work to generate a high count of requests. With requests from multiple machines, it is difficult to prevent or dampen an attack on a server.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Protocal Attacks}
+     \begin{itemize}
+            \item <+->Protocol Attacks seek to disable a server by exloiting a weakness in a protocl. SYN flood attacks TCP by exploiting the three-way handshake process to create a backlogged queue. Ping attacks uses a large number of pings to attack a server. UDP floods send massive amounts of packets to random ports to overwhelm the queue of responses.
+        \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Application Layer Attacks}
+        \begin{itemize}
+            \item<+-> Application layer attacks attempt to exploit the layer of human interaction with a machine. These attacks are nearly indistinguishable from real user interaction. They requires far less resources to execute this attack than it takes to prevent that attack. This makes these attacks resource efficient for an attacker.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{}
     \begin{itemize}
-        \item Volumetric Attacks consist of a flooding a server with request packets to overwhelm its ability to respond. Volumetric attacks require little work to generate a high count of requests. With requests from multiple machines, it is difficult to prevent or dampen an attack on a server.
-        \item Protocol Attacks seek to disable a server by exloiting a weakness in a protocl. SYN flood attacks TCP by exploiting the three-way handshake process to create a backlogged queue. Ping attacks uses a large number of pings to attack a server. UDP floods send massive amounts of packets to random ports.
-        \item Application layer attacks attempt to exploit the layer of human interaction with a machine. These attacks are nearly indistinguishable from real user interaction. They requires far less resources to execute this attack than it takes to prevent that attack. 
-    \end{itemize}-
-    
+        \item<+-> Most attacks were orchestrated against targets in the United States(50.3\%), France(6.6\%), and the UK(6.1\%).
+        \item<+-> Mirai could also target particular ports to affect specific services. Of the attacks on specified ports, the most common ones attacked were 80(HTTP, 37.5\%), 25565(Minecraft, 9.2\%), 443(HTTPS, 6.4\%), and 23594(Runescape, 3.4\%).
+        \item<+-> Several Mirai C2 servers were attacked by some of its other C2 servers. These are from renting DDoS attackers against other renting DDoS attackers.
+    \end{itemize}
 \end{frame}
 \begin{frame}
     \frametitle{Attacks}
 	\begin{itemize}
-		\item<+->Distributed Denial of Service (DDoS) Strategies
+		\item<+->General Targets by Mirai
 			\begin{itemize}
 				\item<+->Multiple DDoS attacks against a variety of targets
 				\item<+->Game Servers (primarily Minecraft and Runescape)
@@ -232,4 +247,5 @@
     \end{itemize}
     
 \end{frame}
+
 \end{document}
