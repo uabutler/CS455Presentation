@@ -24,7 +24,7 @@ ub4782@truman.edu}
 
 \section{Introduction}
 
-In August of 2016, a server from a US bulletproof hosting service starting scanning computers. Shortly after this preliminary scan, the Marai botnet emerged. Within hours, it had infected hundreds of thousands of poorly secured IoT devices. In this paper, Zane Ma, et al. reverse engineer the malware and try to understand how it spread and what made it so effective. This botnet gained notoriety after being used to commit record smashing DDoS attacks. This botnet, and others that evolved from it, are believed to be responsible for high profile attacks on Krebs on Security, Dyn, OVH, and Lonestar Cell. Services provided by companies like Amazon, Twitter, GitHub, and Netflix were disrupted since they receive DNS services from Dyn. By the end of 2017, the botnet started to fade away and the creators were located by Krebs and the FBI.
+In August of 2016, a server from a US bulletproof hosting service starting scanning computers. Shortly after this preliminary scan, the Mirai botnet emerged. Within hours, it had infected hundreds of thousands of poorly secured IoT devices. In this paper, Zane Ma, et al. reverse engineer the malware and try to understand how it spread and what made it so effective. This botnet gained notoriety after being used to commit record smashing DDoS attacks. This botnet, and others that evolved from it, are believed to be responsible for high profile attacks on Krebs on Security, Dyn, OVH, and Lonestar Cell. Services provided by companies like Amazon, Twitter, GitHub, and Netflix were disrupted since they receive DNS services from Dyn. By the end of 2017, the botnet started to fade away and the creators were located by Krebs and the FBI.
 
 \begin{figure}[b]
 \centerline{\includegraphics[width=0.45\textwidth]{../fig1.png}}
@@ -32,9 +32,9 @@ In August of 2016, a server from a US bulletproof hosting service starting scann
 \label{scan}
 \end{figure}
 
-\section{Spreading Marai}
+\section{Spreading Mirai}
 
-On August 1st, 2016, servers owned by DataWagon began a scan that lasted about two hours. About 40 minutes later, it starting infecting devices. Within a minute, over 800 devices were infected. After 10 minutes, they had over 11,000 devices with the malware. This kept increasing with a doubling rate of about 75 minutes until it stabilized with 100k to 200k machines. Once infected, a device would begin to scan other devices. It would check every IPv4 address for open ports running services like SSH, FTP, and Telnet. It carried a blacklist of IP addresses associated with the US Department of Defense and a number of major corporations. This allowed it to go largely undetected. Furthermore, these entites have the resources to properly study and defeat the botnet, so avoiding them gave Marai a better chance of spreading. Once it found a device to infect, it would start brute forcing the credentials. It did this using a small dictionary of anywhere from 60 to about 200 default manufacturer credentials as seen in fig.~\ref{scan}. 
+On August 1st, 2016, servers owned by DataWagon began a scan that lasted about two hours. About 40 minutes later, it starting infecting devices. Within a minute, over 800 devices were infected. After 10 minutes, they had over 11,000 devices with the malware. This kept increasing with a doubling rate of about 75 minutes until it stabilized with 100k to 200k machines. Once infected, a device would begin to scan other devices. It would check every IPv4 address for open ports running services like SSH, FTP, and Telnet. It carried a blacklist of IP addresses associated with the US Department of Defense and a number of major corporations. This allowed it to go largely undetected. Furthermore, these entites have the resources to properly study and defeat the botnet, so avoiding them gave Mirai a better chance of spreading. Once it found a device to infect, it would start brute forcing the credentials. It did this using a small dictionary of anywhere from 60 to about 200 default manufacturer credentials as seen in fig.~\ref{scan}. 
 
  \begin{figure}[t]
 \centerline{\includegraphics[width=0.45\textwidth]{../fig2.png}}

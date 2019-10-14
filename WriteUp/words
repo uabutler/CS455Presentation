@@ -1,6 +1,6 @@
 In August of 2016, a server from a US bulletproof hosting service
 starting scanning computers. Shortly after this preliminary scan, the
-Marai botnet emerged. Within hours, it had infected hundreds of
+Mirai botnet emerged. Within hours, it had infected hundreds of
 thousands of poorly secured IoT devices. In this paper, Zane Ma, et
 al. reverse engineer the malware and try to understand how it spread
 and what made it so effective. This botnet gained notoriety after
@@ -23,21 +23,21 @@ open ports running services like SSH, FTP, and Telnet. It carried a
 blacklist of IP addresses associated with the US Department of Defense
 and a number of major corporations. This allowed it to go largely
 undetected. Furthermore, these entites have the resources to properly
-study and defeat the botnet, so avoiding them gave Marai a better
+study and defeat the botnet, so avoiding them gave Mirai a better
 chance of spreading. Once it found a device to infect, it would start
 brute forcing the credentials. It did this using a small dictionary of
 anywhere from 60 to about 200 default manufacturer credentials as seen
-in fig. 1.
+in fig.~\ref{scan}.
 
 Once the bot figured out what the username and password were, this
 information was sent back to a report server, as seen in
-fig. 2. This server would then send the information to
+fig.~\ref{report}. This server would then send the information to
 dispatch the loader program. The loader program would then log in to
 the newly cracked machine and download an architecture specific
 binary. This binary would then be run. Once the program was loaded
 into memory, it would delete the binary. This made it much more
 difficult to study. It would then obscure information about its
-process to make it harder to detect, shown in fig. 3.
+process to make it harder to detect, shown in fig.~\ref{loader}.
 
 This botnet was notable for targeting devices in the Internet of
 Things (IoT). This mainly consists of small, embedded devices. This
@@ -83,7 +83,7 @@ lists, and used more advanced exploits. They would try to disable
 competing strains of the malware that were operating on the same
 device and close ports that could be used for future vectors of
 attack. This also made it harder to study the malware and scan
-infected devices.
+infected devices..
 
 With its overwhelming power and devastation, Mirai served as a wake up
 call to security experts. This authors of this paper recommends a
