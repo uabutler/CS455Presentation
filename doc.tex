@@ -302,12 +302,12 @@
 	\begin{itemize}
 		\item<+-> One method for monitoring the spread was by using network telescopes
 		\item<+-> Purpose: to analyze the growth and size of the botnet
-		\item<+-> Monitored network request (scan) to a network telescope composed 4.7 millions IP address
+		\item<+-> Monitored network request (scan) to a network telescope composed of 4.7 millions IP addresses
 		\begin{itemize}
 			\item<+-> On average, the network telescope received 1.1 million packets from 269,000 IP addresses per minute 
-			\item<+-> Observed 116.2 billions Mirai probes from 55.4 millions IP address
+			\item<+-> Observed 116.2 billions Mirai probes from 55.4 millions IP addresses
 		\end{itemize}
-		\item<+-> A raw count of IP addess is a poor metric due to DHCP churn
+		\item<+-> A raw count of IP address is a poor metric due to DHCP churn
 		\begin{itemize}
 			\item<+-> Consider the number of hosts actively "scanning" at the start of every hours
 			\item<+-> Identified scans that targeted the IPv4 address space at an estimated rate of at least five packets per second
@@ -327,7 +327,7 @@
 			\item<+-> The scan often takes 24 hours to complete, during which devices may churn to a new IP address
 			\item<+-> Resolution: restricting analysis to banners that were collected within twenty minutes of scanning activity
 		\end{itemize}
-		\item<+-> Post-filtering, the dataset include 1.8 millions banner associated with 1.2 million IP addresses
+		\item<+-> Post-filtering, the dataset include 1.8 millions banners associated with 1.2 million IP addresses
 		\begin{itemize}
 			\item<+-> Process each banner to identify the device manufacturer and model using Nmap
 			\item<+-> In total, identified 31.5 \% of banners (about 600k banners)
