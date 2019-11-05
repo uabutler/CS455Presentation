@@ -357,27 +357,6 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Active \& Passive DNS}
-	\begin{itemize}
-		\item<+-> Purpose: to construct a graph reflecting the shared infrastructure used by Mirai
-		\item<+-> Collected 209 millions passive DNS record per day (historical record of DNS zone) and 290 millions active DNS records per day of C2 server
-		\item<+-> Use above dataset to identify shared DNS infrastructure by linking related historic domain names (RHDN) and related historic IPs (RHIPs)
-		\begin{itemize}
-			\item<+-> For a given C2 domain, identify the IP address it previously resolved to and added them to a growing set of domains and IPs
-			\item<+-> Starting from an IP and finding any domain names that concurrently resolved it
-			\item<+-> In the end, from a single domain name, we can expand a set of domain name and IP addresses
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\begin{figure}
-		\includegraphics[width=50 mm, scale = 0.5]{C2DomainRelationship.png}
-		\caption{ \textbf{C2 Domain Relationships} -- We visualize related C2 infrastructure, depicting C2 domains as nodes and shared IPs as edges between two domains.}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Attack Commands}
 	\begin{itemize}
 		\item<+-> Purpose: to track the attack commands issued by the Mirai operators
